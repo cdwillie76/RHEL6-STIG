@@ -381,7 +381,7 @@
       - patch
       - file_perms
 
-- name: "MEDIUM | V-38475 | AUDIT | The system must require passwords to contain a minimum of 14 characters."
+- name: "MEDIUM | V-38475 | AUDIT | The system must require passwords to contain a minimum of 15 characters."
   shell: grep -E '^PASS_MIN_LEN' /etc/login.defs | awk '{print $2}'
   register: min_pwd_len_audit
   changed_when: no
@@ -393,7 +393,7 @@
       - audit
       - passwords
 
-- name: "MEDIUM | V-38475 | PATCH | The system must require passwords to contain a minimum of 14 characters."
+- name: "MEDIUM | V-38475 | PATCH | The system must require passwords to contain a minimum of 15 characters."
   lineinfile:
       regexp: '(^PASS_MIN_LEN)\s*(\d*)'
       line: '\1 {{ rhel6stig_pass_min_length }}'
